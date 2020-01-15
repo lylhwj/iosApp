@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+  <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+  <meta charset="utf-8">
+  <title></title>
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://api.bianyue.cn 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.captcha.qq.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0;viewport-fit=cover">
+
+  <link rel="icon" href="./static/img/favicon.ico" type="image/x-icon" />
+
+  <script type="text/javascript">
+        //北京时间 2019-03-04 17:00   1551693600000
+        var startTime = new Date(1551690000000);
+      //北京时间 2019-03-15 18:00   1552212000000
+      var endTime = new Date(15526440000000)
+      var curDate = new Date();
+      if (false) {
+      // if (curDate >= startTime && curDate <= endTime) { 
+        //同步XHR
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://api2.bianyue.cn/web/reviewApp/index?version=2.3.0', false);
+        request.send(null);
+        if (request.status === 200) {
+          obj = JSON.parse(request.responseText);
+          if (obj.data.flag) {
+            window.location.href = "http://api.bianyue.cn/iphone/init.php?vname=review";
+          }
+        }
+      } else {
+        //正常
+      }
+  </script>
+
+  <script type="text/javascript">
+    document.addEventListener("deviceready", function () {
+       codePush.sync();
+    }, true);
+  </script>
+
+  <script src="./static/js/flexible.js"></script>
+  <script src="./static/js/jquery.min.js"></script>
+  <script src="./static/js/layer.min.js"></script>
+  <script src="./static/js/fastclick.js"></script> 
+  <!-- <script src="./static/js/video.js"></script>  -->
+  <script src="./cordova.js"></script>  
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
